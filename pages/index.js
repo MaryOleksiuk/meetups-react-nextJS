@@ -30,9 +30,7 @@ const HomePage = ({ meetups }) => {
 
 export async function getStaticProps() {
   // fetch data from api
-  const client = await MongoClient.connect(
-    "mongodb+srv://mary:12345@cluster0.diko6.mongodb.net/meetups?retryWrites=true&w=majority"
-  );
+  const client = await MongoClient.connect(process.env.DB_URL);
   const db = client.db();
 
   const meetupsCollection = db.collection("meetups");
